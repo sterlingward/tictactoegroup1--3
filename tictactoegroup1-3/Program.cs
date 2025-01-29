@@ -27,7 +27,6 @@ class Program
                 if (gameWon)
                 {
                     Tools.PrintBoard(board);
-                    //Console.WriteLine($"Player {((winner == 'X') ? 1 : 2)} wins!");
                     break;
                 }
                 player = (player == 1) ? 2 : 1; // Switch player
