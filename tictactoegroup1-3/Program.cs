@@ -1,8 +1,8 @@
 ﻿// See https://aka.ms/new-console-template for more information
-
+// This program was written by: Jacob Boud, Rachel Hansen, Dallen Openshaw, and Sterling Ward
 // Program.cs (Driver Class)
 using System;
-
+namespace tictactoegroup1_3;
 class Program
 {
     static void Main()
@@ -14,20 +14,20 @@ class Program
 
         Console.WriteLine("Welcome to Tic-Tac-Toe!");
         
-        while (!gameWon && !GameLogic.IsBoardFull(board))
+        while (!gameWon && !Tools.IsBoardFull(board))
         {
-            GameLogic.PrintBoard(board);
+            Tools.PrintBoard(board);
             Console.Write($"Player {player}, enter a position (1-9): ");
 
             if (int.TryParse(Console.ReadLine(), out choice) && choice >= 1 && choice <= 9 && board[choice - 1] == choice.ToString()[0])
             {
                 board[choice - 1] = (player == 1) ? 'X' : 'O';
-                gameWon = GameLogic.CheckWinner(board, out char winner);
+                gameWon = Tools.isWinner(board );
 
                 if (gameWon)
                 {
-                    GameLogic.PrintBoard(board);
-                    Console.WriteLine($"Player {((winner == 'X') ? 1 : 2)} wins!");
+                    Tools.PrintBoard(board);
+                    //Console.WriteLine($"Player {((winner == 'X') ? 1 : 2)} wins!");
                     break;
                 }
                 player = (player == 1) ? 2 : 1; // Switch player
@@ -40,7 +40,7 @@ class Program
 
         if (!gameWon)
         {
-            GameLogic.PrintBoard(board);
+            Tools.PrintBoard(board);
             Console.WriteLine("It's a draw!");
         }
     }
